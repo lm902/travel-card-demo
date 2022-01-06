@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function check (event) {
+      event.preventDefault()
+      let city = document.getElementById('city').value
+      const star = document.getElementById('star').checked
+      let phone = document.getElementById('phone').value
+      if (city.includes('*')) city += '（注：*表示当前该城市存在中风险或高风险地区,并不表示用户实际到访过这些中高风险地区。）'
+      if (star) phone = phone.replace(/(?<=\d{3})\d{4}/, '****')
+      location.href = `travel-card/index.html?city=${encodeURIComponent(city)}&phone=${encodeURIComponent(phone)}`
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <input id="phone" type="tel" placeholder="手机号码" size='11' required pattern="\d{11}" />
+    <input name="star" id="star" type="checkbox" checked />
+    <label for="star">脱敏</label>
+    <br />
+    <input id="city" placeholder="城市文本" required>
+    <button type="submit" onclick="check(event)">前往</button>
+  </form>
+</body>
+
+</html>

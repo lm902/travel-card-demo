@@ -41,5 +41,5 @@ document.querySelector('input[name=hobby]').oninput = function (event) {
 }
 
 mint.onclick = function () {
-  location.href = 'result.html'
+  location.href = 'result.html' + location.search
 }
